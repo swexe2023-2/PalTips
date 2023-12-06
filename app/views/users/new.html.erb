@@ -1,0 +1,11 @@
+<%= form_with model: @user, method: :post, data: {turbo: false} do |f| %>
+    <%= f.label :user_name, 'ユーザー名' %>
+    <%= f.text_field :user_name %>
+    <%= f.label :email, 'メールアドレス' %>
+    <%= f.text_field :email %>
+    <%= f.label :password_encrypt, 'パスワード' %>
+    <%= f.password_field :password_encrypt %>
+    <%= f.label :password_encrypt_confirmation, 'パスワード(確認)' %>
+    <%= f.password_field :password_encrypt_confirmation %>
+    <%= f.submit '新規登録' %>
+<% end %>
