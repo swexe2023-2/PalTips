@@ -22,9 +22,11 @@ class UsersController < ApplicationController
     @user.valid?
     puts @user.errors.full_messages
     if @user.save
-      redirect_to users_path
-    else
+      print("新規追加したuserのid表示：", @user.id)
+      session[:login_id] = @user.id
       redirect_to root_path
+    else
+      render "new"
     end
   end
   
@@ -33,6 +35,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    #@user = User.find(~~~)
+    print("destroy起動")
+    delete_user = User.find(current_user.id)
+    delete_user.destroy
+    session.delete(:login_id)
+    print(session)
+    redirect_to root_path
   end
 end

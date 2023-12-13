@@ -9,3 +9,12 @@
     <%= f.password_field :password_encrypt_confirmation %>
     <%= f.submit '新規登録' %>
 <% end %>
+
+
+
+<% if current_user %>
+    <p><%= link_to "ログアウト画面", sessions_logout_path %></p>
+    <p><%= link_to "ユーザー削除", user_path(current_user), data: {turbo_method: :delete} %></p>
+<% else %>
+    <p><%= link_to "ログイン画面", sessions_index_path %></p>
+<% end %>
