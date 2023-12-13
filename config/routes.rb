@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'questions/index'
+  get 'questions/show'
+  get 'questions/new'
+  post 'questions/create'
+  get 'questions/edit'
+  get 'questions/destroy'
+  get 'questions/search'
+  
   get 'sessions/index'
   post 'sessions/login'
   get 'sessions/logout'
