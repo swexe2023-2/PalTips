@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+    has_many :questions, dependent: :destroy
+    
     validates :password_encrypt, presence: true, confirmation: true
     attr_accessor :password_encrypt, :password_encrypt_confirmation, :a
     

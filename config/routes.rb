@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
-  get 'questions/index'
-  get 'questions/show'
-  get 'questions/new'
-  post 'questions/create'
-  get 'questions/edit'
-  get 'questions/destroy'
+  get 'grades/index'
+  get 'subjects/index'
+  
+  resources :questions
   get 'questions/search'
   
   get 'sessions/index'
@@ -16,4 +14,5 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :users
   root 'users#new'
+  #root 'questions#new'
 end
