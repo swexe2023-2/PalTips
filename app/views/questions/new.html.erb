@@ -1,0 +1,11 @@
+<%= form_with model: @question, method: :post, data: {turbo: false} do |f| %>
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title %>
+    <%= f.label :content_question, '質問内容' %>
+    <%= f.text_field :content_question %>
+    <%= f.label :subject_id %>
+    <%= f.collection_select :subject_id, Subject.all, :id, :subject_name, :include_blank => "授業カテゴリーを選択してください" %>
+    <%= f.submit '質問投稿' %>
+<% end %>
+
+<!--カテゴリー選択画面も必要-->
