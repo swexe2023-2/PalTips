@@ -1,2 +1,8 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<% if current_user %>
+    <p>user id：<%= current_user.id %></p>
+    <p>user name：<%= current_user.user_name %></p>
+    <p><%= link_to "ログアウト画面", sessions_logout_path %></p>
+    <p><%= link_to "ユーザー削除", user_path(current_user), data: {turbo_method: :delete} %></p>
+<% else %>
+    <p><%= link_to "ログイン画面", sessions_index_path %></p>
+<% end %>

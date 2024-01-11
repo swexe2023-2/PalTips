@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
   end
   
   def show
-    
+    #質問の個別ページを表示
   end
 
   def edit

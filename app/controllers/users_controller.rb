@@ -31,7 +31,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    #@user = User.find(~~~)
+    #@selected_user = User.find(~~~)
+    render "show"
   end
 
   def destroy

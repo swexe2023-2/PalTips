@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :users
-  root 'users#new'
-  #root 'questions#new'
+  #root 'users#show'
+  #root 'questions#index'
 end
