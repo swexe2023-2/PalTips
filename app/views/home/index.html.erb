@@ -8,13 +8,13 @@
 </head>
 <style>
 
- body {
+body {
   font-family: "Lato", sans-serif;
-  background-color: #808080;
+  background-color: white;
   margin: 0;
   padding: 0;
- }
- 
+}
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:600&display=swap');
 *{
   margin: 0;
@@ -216,6 +216,11 @@ label #cancel{
     <a href="#">
        <i class="fas fa-calendar"></i>
       <span>1年生</span>
+    </a>
+    <a href="#">
+      <%= link_to "科目追加",
+      subjects_path, class:"
+      nav-link" %>
     </a>
   </div>
 

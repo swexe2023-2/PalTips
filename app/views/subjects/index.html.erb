@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>科目一覧</h1>
+
+<div id="subjects">
+  <% @subjects.each do |subject| %>
+    <%= render subject %>
+    <p>
+      <%= link_to "この科目を閲覧する", subject %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "科目を作成する", new_subject_path, class:"btn btn-secondary" %>
