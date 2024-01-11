@@ -1,7 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+<<<<<<< HEAD
   title: MyString
 
 two:
   title: MyString
+=======
+  subject_name: MyString
+  grade_id: 1
+
+two:
+  subject_name: MyString
+  grade_id: 1
+>>>>>>> c14e2c9bc7c10893e9a64b7c18adfa34103a0402

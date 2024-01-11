@@ -1,14 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Questions</h1>
 
-<div id="questions">
+<ul>
   <% @questions.each do |question| %>
-    <%= render question %>
-    <p>
-      <%= link_to "Show this question", question %>
-    </p>
+    <li>
+      <strong><%= question.title %></strong>
+      <p><%= question.content %></p>
+    </li>
   <% end %>
-</div>
+</ul>
 
-<%= link_to "New question", new_question_path %>
+<%= link_to '新しい質問を投稿する', new_question_path %>

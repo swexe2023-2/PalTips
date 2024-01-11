@@ -1,70 +1,45 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: %i[ show edit update destroy ]
-
-  # GET /questions or /questions.json
   def index
     @questions = Question.all
+    #選択された授業の質問一覧を表示する
   end
 
-  # GET /questions/1 or /questions/1.json
-  def show
-  end
-
-  # GET /questions/new
   def new
     @question = Question.new
   end
+  
+  def create
+    puts "create起動"
+    puts params[:question][:title]
+    puts params[:question][:content_question]
+    puts current_user
+    puts params[:question][:subject_id]
+    @question = Question.new(
+      title: params[:question][:title],
+      content_question: params[:question][:content_question],
+      user_id: current_user.id,
+      subject_id: params[:question][:subject_id],
+      #授業カテゴリが選択されたときに、カテゴリを示す数字を受け取ってここに入れる
+    )
+    puts @question
+    if @question.save
+      redirect_to question_path(id: @question.id)
+    else
+      puts @question.errors.full_messages
+      render "new"
+    end
+  end
+  
+  def show
+    
+  end
 
-  # GET /questions/1/edit
   def edit
   end
 
-  # POST /questions or /questions.json
-  def create
-    @question = Question.new(question_params)
-
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to question_url(@question), notice: "Question was successfully created." }
-        format.json { render :show, status: :created, location: @question }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /questions/1 or /questions/1.json
-  def update
-    respond_to do |format|
-      if @question.update(question_params)
-        format.html { redirect_to question_url(@question), notice: "Question was successfully updated." }
-        format.json { render :show, status: :ok, location: @question }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /questions/1 or /questions/1.json
   def destroy
-    @question.destroy
-
-    respond_to do |format|
-      format.html { redirect_to questions_url, notice: "Question was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_question
-      @question = Question.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def question_params
-      params.require(:question).permit(:title, :text)
-    end
+  def search
+  end
 end

@@ -1,6 +1,7 @@
 require "test_helper"
 
 class SubjectsControllerTest < ActionDispatch::IntegrationTest
+<<<<<<< HEAD
   setup do
     @subject = subjects(:one)
   end
@@ -45,4 +46,10 @@ class SubjectsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to subjects_url
   end
+=======
+  test "should get index" do
+    get subjects_index_url
+    assert_response :success
+  end
+>>>>>>> c14e2c9bc7c10893e9a64b7c18adfa34103a0402
 end
