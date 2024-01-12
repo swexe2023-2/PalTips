@@ -1,77 +1,69 @@
-require "test_helper"
-
-class QuestionsControllerTest < ActionDispatch::IntegrationTest
-<<<<<<< HEAD
-  setup do
-    @question = questions(:one)
+class QuestionsController < ApplicationController
+  def index
+    @questions = Question.all
+    #選択された授業の質問一覧を表示する
   end
 
-  test "should get index" do
-    get questions_url
-=======
-  test "should get index" do
-    get questions_index_url
-    assert_response :success
+  def new
+    @question = Question.new
+    
   end
-
-  test "should get show" do
-    get questions_show_url
->>>>>>> c14e2c9bc7c10893e9a64b7c18adfa34103a0402
-    assert_response :success
-  end
-
-  test "should get new" do
-<<<<<<< HEAD
-    get new_question_url
-    assert_response :success
-  end
-
-  test "should create question" do
-    assert_difference("Question.count") do
-      post questions_url, params: { question: { text: @question.text, title: @question.title } }
+  
+  def create
+    puts "create起動"
+    # puts params[:question][:title]
+    # puts params[:question][:content_question]
+    # puts current_user
+    # puts params[:question][:subject_id]
+    # @question = Question.new(
+    #   title: params[:question][:title],
+    #   content_question: params[:question][:content_question],
+    #   user_id: current_user.id,
+    #   subject_id: params[:question][:subject_id],
+    
+    # )
+    @question = Question.new(question_params)
+    @question.user_id = current_user.id
+    puts @question
+    if @question.save
+      redirect_to question_path(id: @question.id)
+    else
+      puts @question.errors.full_messages
+      render "new"
     end
-
-    assert_redirected_to question_url(Question.last)
+  end
+  
+  def show
+    @question = Question.find(params[:id])
+    #質問の個別ページを表示
   end
 
-  test "should show question" do
-    get question_url(@question)
-=======
-    get questions_new_url
->>>>>>> c14e2c9bc7c10893e9a64b7c18adfa34103a0402
-    assert_response :success
+  def edit
+    @question = Question.find(params[:id])
   end
-
-  test "should get edit" do
-<<<<<<< HEAD
-    get edit_question_url(@question)
-    assert_response :success
-  end
-
-  test "should update question" do
-    patch question_url(@question), params: { question: { text: @question.text, title: @question.title } }
-    assert_redirected_to question_url(@question)
-  end
-
-  test "should destroy question" do
-    assert_difference("Question.count", -1) do
-      delete question_url(@question)
+  
+  def update
+    question = Question.find(params[:id])
+    if question.update(question_params)
+      #flash[:notice] = '1レコード更新しました'
+      redirect_to question_path(id: question.id)
+    else
+      render 'edit'
     end
-
-    assert_redirected_to questions_url
-=======
-    get questions_edit_url
-    assert_response :success
   end
 
-  test "should get destroy" do
-    get questions_destroy_url
-    assert_response :success
+  def destroy
+     print("destroy起動")
+    delete_question = Question.find(params[:id])
+    delete_question.destroy
+    redirect_to root_path
   end
 
-  test "should get search" do
-    get questions_search_url
-    assert_response :success
->>>>>>> c14e2c9bc7c10893e9a64b7c18adfa34103a0402
+  def search
   end
+  
+  private
+    def question_params
+      params.require(:question).permit(:title, :content_question, :subject_id)
+    end
 end
