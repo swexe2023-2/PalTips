@@ -1,43 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="jp">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
 <style>
 
- body {
-    font-family: "Lato", sans-serif;
- }
- 
+body {
+  font-family: "Lato", sans-serif;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat:600|Open+Sans:600&display=swap');
 *{
   margin: 0;
   padding: 0;
   text-decoration: none;
 }
+
 .sidebar{
   position: fixed;
   width: 240px;
   left: -240px;
   height: 100%;
   top: 54px;
-  background: white;
+  background: #1e1e1e;
   transition: all .5s ease;
 }
+
 .sidebar header{
   font-size: 28px;
-  color: black;
+  color: white;
   line-height: 70px;
   text-align: center;
-  background: white;
+  background: #1b1b1b;
   user-select: none;
   font-family: 'Montserrat', sans-serif;
 }
+
 .sidebar a{
   display: block;
   height: 65px;
   width: 100%;
-  color: black;
-  background: white;
+  color: white;
   line-height: 65px;
   padding-left: 30px;
   box-sizing: border-box;
@@ -47,10 +56,13 @@
   font-family: 'Open Sans', sans-serif;
   transition: all .5s ease;
 }
-a.active,a:hover{
-  border-left: 5px solid #b93632;
-  color: #b93632;
+
+.sidebar a.active,.sidebar a:hover{
+  border-left: 5px solid black;
+  padding-left: 50px;
+  color: white;
 }
+
 .sidebar a i{
   font-size: 23px;
   margin-right: 16px;
@@ -59,18 +71,20 @@ a.active,a:hover{
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
 #check{
   display: none;
 }
+
 label #btn,label #cancel{
   position: absolute;
   cursor: pointer;
-  color: black;
   border-radius: 5px;
   border: 1px solid #262626;
-  margin: -40px 30px;
+  margin: -40px 0;
   font-size: 29px;
-  background: white;
+  background: #262626;
+  color: white;
   height: 45px;
   width: 45px;
   text-align: center;
@@ -78,39 +92,28 @@ label #btn,label #cancel{
   transition: all .5s ease;
   left: 0;
 }
-/*label #btn,label #cancel{*/
-/*  position: absolute;*/
-/*  cursor: pointer;*/
-/*  color: black;*/
-/*  border-radius: 5px;*/
-/*  border: 1px solid #262626;*/
-/*  margin: -40px 30px;*/
-/*  font-size: 29px;*/
-/*  background: white;*/
-/*  height: 45px;*/
-/*  width: 45px;*/
-/*  left: 0;*/
-/*  text-align: center;*/
-/*  line-height: 45px;*/
-/*  transition: all .5s ease;*/
-/*}*/
+
 label #cancel{
   opacity: 0;
   visibility: hidden;
 }
+
 #check:checked ~ .sidebar{
   left: 0;
 }
+
 #check:checked ~ label #btn{
-  margin-left: 245px;
+  margin-left: 240px;
   opacity: 0;
   visibility: hidden;
 }
+
 #check:checked ~ label #cancel{
-  margin-left: 245px;
+  margin-left: 240px;
   opacity: 1;
   visibility: visible;
 }
+
 @media(max-width : 860px){
   .sidebar{
     height: auto;
@@ -118,176 +121,54 @@ label #cancel{
     left: 0;
     margin: 100px 0;
   }
+  
   header,#btn,#cancel{
     display: none;
   }
+  
   span{
     position: absolute;
     margin-left: 23px;
     opacity: 0;
     visibility: hidden;
   }
+  
   .sidebar a{
     height: 60px;
   }
+  
   .sidebar a i{
     margin-left: -10px;
   }
+  
   a:hover {
     width: 200px;
     background: inherit;
   }
+  
   .sidebar a:hover span{
     opacity: 1;
     visibility: visible;
   }
 }
-/*.sidebar {*/
-/*    position: fixed;*/
-/*    width: 240px;*/
-/*    left: -100%;*/
-/*    height: 90px;*/
-/*    background-color: #fff;*/
-/*    transition: all .5s ease;*/
-    
-    /*position: absolute;*/
-    /*background-color: #fff;*/
-    /*height: 90px;*/
-    /*left: -100%;*/
-    /*transition: left 0.3s ease-in;*/
-/*}*/
 
-/*.sidebar--visible {*/
-/*    left: 0;*/
-/*}*/
-
-/*.sidebar ul {*/
-/*    box-sizing: border-box;*/
-/*    list-style: none;*/
-/*    margin: 0;*/
-/*    padding: 72px;*/
-/*    position: relative;*/
-/*    display: block;*/
-/*}*/
-
-/*.sidebar li {*/
-/*    margin: 12px 0;*/
-/*}*/
-
-/*.sidebar a {*/
-/*    text-decoration: none;*/
-/*    font-size: 1.4rem;*/
-/*    font-family: 'Lato', sans-serif;*/
-/*    color: black;*/
-/*}*/
-
-/*.sidebar a:hover,*/
-/*.sidebar a:focus {*/
-/*    text-decoration: none;*/
-/*}*/
-
-/*#open-menu {*/
-/*    border: none;*/
-/*    background-color: #f1f1f1;*/
-/*    font-size: 1.4rem;*/
-/*    font-family: 'Lato', sans-serif;*/
-/*    padding: 6px 24px;*/
-/*    cursor: pointer;*/
-/*    position: fixed;*/
-/*    left: 0;*/
-/*    top: 55px;*/
-/*}*/
-
-/*#close-menu {*/
-/*    background: none;*/
-/*    border: none;*/
-/*    transform: rotate(45deg);*/
-/*    font-size: 72px;*/
-/*    font-family: 'Lato', sans-serif;*/
-/*    color: black;*/
-/*    cursor: pointer;*/
-/*    position: absolute;*/
-/*    right: 6px;*/
-/*    top: -12px;*/
-/*    z-index: 2;*/
-/*}*/
-/* .sidebar {*/
-/*    height: 100%;*/
-/*    width: 100px;*/
-/*    position: fixed;*/
-/*    z-index: 1;*/
-/*    top: 55px;*/
-/*    left: 0;*/
-/*    background-color: #f1f1f1;*/
-/*    overflow-x: hidden;*/
-/*    transition: 0.5s;*/
-/*    padding-top: 60px;*/
-/* }*/
-
-/* .sidebar a {*/
-/*    padding: 8px 8px 8px 32px;*/
-/*    text-decoration: none;*/
-/*    font-size: 25px;*/
-/*    color: black;*/
-/*    display: block;*/
-/*    transition: 0.3s;*/
-/*    padding-top: 60px;*/
-/*    padding-left: 80px;*/
-/* }*/
-
-/* .sidebar a:hover {*/
-/*    color: #f1f1f1;*/
-/* }*/
- 
-/* .sidebar > .side-btn-open, .side-btn-close {*/
-/*    width: fit-content;*/
-/*    height: fit-content;*/
-/*    display: inline;*/
-/*    color: #ffffff;*/
-/*    background: none;*/
-/*    border: none;*/
-/*    font-size: 110%;*/
-/*    cursor: pointer;*/
-/*}*/
-  
- /*.sidebar .closebtn {*/
- /*   position: absolute;*/
- /*   top: -26px;*/
- /*   right: 25px;*/
- /*   font-size: 36px;*/
- /*   margin-left: 50px;*/
- /*}*/
-
- /*.openbtn {*/
- /*   font-size: 20px;*/
- /*   cursor: pointer;*/
- /*   color: black;*/
- /*   padding: 10px 15px;*/
- /*   margin-left: -320px;*/
- /*   border: none;*/
- /*}*/
-
- /*.openbtn:hover {*/
- /*   background-color: #444;*/
- /*}*/
-
- .content {
-    transition: margin-left 0.5s;
-    padding: 10px;
- }
+.content {
+  transition: margin-left 0.5s;
+  padding: 10px;
+}
 
 .d-flex {
-    width:100%;
+  width:100%;
 }
 
 .card {
   box-sizing: border-box;
   width: 210px;
   height: 210px;
-  background: rgba(217, 217, 217, 0.58);
-  border: 1px solid white;
-  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
-  backdrop-filter: blur(6px);
+  /*background: rgba(217, 217, 217, 0.58);*/
+  border: 1px solid black;
+  /*box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);*/
+  /*backdrop-filter: blur(6px);*/
   border-radius: 17px;
   text-align: center;
   cursor: pointer;
@@ -298,6 +179,7 @@ label #cancel{
   user-select: none;
   font-weight: bolder;
   color: black;
+  left: 200px
 }
 
 .card:hover {
@@ -310,7 +192,6 @@ label #cancel{
 }
 
 </style>
-</head>
 
 <body>
   <input type="checkbox" id="check">
@@ -336,42 +217,34 @@ label #cancel{
        <i class="fas fa-calendar"></i>
       <span>1年生</span>
     </a>
+    <a href="#">
+      <%= link_to "科目追加",
+      subjects_path, class:"
+      nav-link" %>
+    </a>
   </div>
-<!--<div id="mySidebar" class="sidebar">-->
-  <!--<a href="javascript:void(0)" class="closebtn" onclick="hide()">X</a>-->
-  <!--<button id="close-menu" aria-label="Close menu">+</button>-->
-<!--  <button id="open-menu" aria-label="Open menu">☰</button>-->
-<!--  <ul>-->
-<!--    <li><a href="#">4年生</a></li>-->
-<!--    <li><a href="#">3年生</a></li>-->
-<!--    <li><a href="#">2年生</a></li>-->
-<!--    <li><a href="#">1年生</a></li>-->
-<!--  <ul>-->
-<!--</div>-->
-<!--<div id="content">-->
-<!--  <button class="openbtn" id="openbtn" onclick="show()">☰</button>-->
-<!--</div>-->
 
 <script>
-  const sidebar = document.querySelector('.sidebar')
-  const openMenu = document.querySelector('#open-menu')
-  const closeMenu = document.querySelector('#close-menu')
+  const sidebar = document.querySelector('.sidebar');
+  const openMenu = document.querySelector('label #btn');
+  const closeMenu = document.querySelector('label #cancel');
   
-  openMenu.addEventListener('click', toggleSidebarVisibility)
-  closeMenu.addEventListener('click', toggleSidebarVisibility)
+  openMenu.addEventListener('click', toggleSidebarVisibility);
+  closeMenu.addEventListener('click', toggleSidebarVisibility);
   
   function toggleSidebarVisibility() {
-      sidebar.classList.toggle('sidebar--visible');
-  }
-// function show() {
-//   document.getElementById("mySidebar").style.width = "250px";
-//   document.getElementById("content").style.marginLeft = "250px";
-// }
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('sidebar--visible');  }
+  
+  const sidebarLinks = document.querySelectorAll('.sidebar a');
+  sidebarLinks.forEach(link => {
+      link.addEventListener('click', () => {
+          const checkbox = document.getElementById('check');
+          checkbox.checked = false;
+          toggleSidebarVisibility();
+      });
+  });
 
-// function hide() {
-//   document.getElementById("mySidebar").style.width = "0";
-//   document.getElementById("content").style.marginLeft = "0";
-// }
 </script>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
