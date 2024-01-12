@@ -1,9 +1,4 @@
 <%= form_with url: sessions_login_path, method: :post, data: {turbo: false} do |f| %>
-    <%= f.label :email, 'メールアドレス' %>
-    <%= f.text_field :email %><br>
-    <%= f.label :password_encrypt, 'パスワード' %>
-    <%= f.password_field :password_encrypt %><br>
-    <%= f.label :password_encrypt_confirmation, 'パスワード(確認)' %>
-    <%= f.password_field :password_encrypt_confirmation %><br>
+    <%= render :partial => 'users/Uform', :locals => {:f => f} %>
     <%= f.submit 'ログイン' %><br>
 <% end %>

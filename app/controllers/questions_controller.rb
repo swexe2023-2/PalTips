@@ -11,16 +11,16 @@ class QuestionsController < ApplicationController
   
   def create
     puts "create起動"
-    puts params[:question][:title]
-    puts params[:question][:content_question]
-    puts current_user
-    puts params[:question][:subject_id]
+    # puts params[:question][:title]
+    # puts params[:question][:content_question]
+    # puts current_user
+    # puts params[:question][:subject_id]
     # @question = Question.new(
     #   title: params[:question][:title],
     #   content_question: params[:question][:content_question],
     #   user_id: current_user.id,
     #   subject_id: params[:question][:subject_id],
-    #   #授業カテゴリが選択されたときに、カテゴリを示す数字を受け取ってここに入れる
+    
     # )
     @question = Question.new(question_params)
     @question.user_id = current_user.id

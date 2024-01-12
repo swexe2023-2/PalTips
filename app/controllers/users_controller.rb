@@ -31,7 +31,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    #@selected_user = User.find(~~~)
+    @selected_user = User.find(params[:id])
+    @user_questions = @selected_user.questions
     render "show"
   end
 

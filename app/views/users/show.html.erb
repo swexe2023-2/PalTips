@@ -1,8 +1,15 @@
-<% if current_user %>
+<% if @selected_user == current_user %>
     <p>user id：<%= current_user.id %></p>
     <p>user name：<%= current_user.user_name %></p>
     <p><%= link_to "ログアウト画面", sessions_logout_path %></p>
     <p><%= link_to "ユーザー削除", user_path(current_user), data: {turbo_method: :delete} %></p>
 <% else %>
-    <p><%= link_to "ログイン画面", sessions_index_path %></p>
+    <p>user name：<%= @selected_user.user_name %></p>
 <% end %>
+
+<h3>投稿した質問</h3>
+<ul>
+    <% @user_questions.each do |q| %>
+        <li><%= link_to q.title, question_path(q) %></li>
+    <% end %>
+</ul>
