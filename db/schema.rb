@@ -19,16 +19,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_20_062100) do
 
   create_table "questions", force: :cascade do |t|
     t.string "title"
-    t.string "content_question"
-    t.integer "user_id"
-    t.integer "subject_id"
+    t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.string "subject_name"
-    t.integer "grade_id"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
