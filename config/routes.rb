@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :questions
   get 'questions/search'
   
+  resources :answers
+  
   get 'sessions/index'
   post 'sessions/login'
   get 'sessions/logout'
