@@ -12,12 +12,16 @@
     </div>
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">ログイン</a>
+          <% if current_user %>
+              <a class="nav-link text-light" href="/sessions/logout">ログアウト</a>
+          <% else %>
+              <a class="nav-link text-light" href="/sessions/index">ログイン</a>
+          <% end %>
         </li>
     </ul>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">登録</a>
+          <a class="nav-link" href="/users/new">登録</a>
         </li>
     </ul>
   </div>

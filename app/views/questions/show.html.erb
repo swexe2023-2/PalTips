@@ -1,2 +1,26 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<table>
+    <tr>
+        <th>タイトル</th>
+        <td><%= @question.title %></td>
+    </tr>
+    <tr>
+        <th>質問内容</th>
+        <td><%= @question.content_question %></td>
+    </tr>
+    <tr>
+        <th>ユーザー名</th>
+        <td><%= link_to @question.user.user_name, user_path(@question.user) %></td>
+    </tr>
+    <tr>
+        <th>カテゴリー</th>
+        <td><%= @question.subject.subject_name %></td>
+    </tr>
+    <% if current_user && @question.user_id == current_user.id %>
+        <tr>
+            <td><%= link_to "編集", edit_question_path(@question) %></td>
+        </tr>
+        <tr>
+            <td><%= link_to "削除", question_path(@question), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %></td>
+        </tr>
+    <% end %>
+</table>

@@ -1,0 +1,21 @@
+<table>
+    <tr>
+        <td><%= f.label :title, 'タイトル' %></td>
+        <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+        <td><%= f.label :content_question, '質問内容' %></td>
+        <td><%= f.text_field :content_question %></td>        
+    </tr>
+    <tr>
+        <td><%= f.label :subject_id %></td>
+        <td><%= f.collection_select :subject_id, Subject.all, :id, :subject_name, :include_blank => "授業カテゴリーを選択してください" %></td>
+    </tr>
+    
+<% if @question.persisted? %> <!--@questionがデータベースに保存されているかどうか-->
+    </table>
+    <%= f.submit '編集' %>
+<% else %>
+    </table>
+    <%= f.submit '質問投稿' %>
+<% end %>

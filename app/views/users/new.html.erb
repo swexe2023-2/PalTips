@@ -1,20 +1,7 @@
 <%= form_with model: @user, method: :post, data: {turbo: false} do |f| %>
     <%= f.label :user_name, 'ユーザー名' %>
-    <%= f.text_field :user_name %>
-    <%= f.label :email, 'メールアドレス' %>
-    <%= f.text_field :email %>
-    <%= f.label :password_encrypt, 'パスワード' %>
-    <%= f.password_field :password_encrypt %>
-    <%= f.label :password_encrypt_confirmation, 'パスワード(確認)' %>
-    <%= f.password_field :password_encrypt_confirmation %>
+    <%= f.text_field :user_name %><br>
+    <%= render :partial => 'Uform', :locals => {:f => f} %>
     <%= f.submit '新規登録' %>
 <% end %>
 
-<%= link_to "質問投稿画面", new_question_path %>
-
-<% if current_user %>
-    <p><%= link_to "ログアウト画面", sessions_logout_path %></p>
-    <p><%= link_to "ユーザー削除", user_path(current_user), data: {turbo_method: :delete} %></p>
-<% else %>
-    <p><%= link_to "ログイン画面", sessions_index_path %></p>
-<% end %>

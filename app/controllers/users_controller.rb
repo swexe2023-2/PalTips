@@ -31,7 +31,9 @@ class UsersController < ApplicationController
   end
   
   def show
-    #@user = User.find(~~~)
+    @selected_user = User.find(params[:id])
+    @user_questions = @selected_user.questions
+    render "show"
   end
 
   def destroy

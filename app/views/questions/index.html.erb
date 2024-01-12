@@ -1,12 +1,8 @@
+<% if current_user %>
+    <%= link_to "質問投稿画面", new_question_path %><br>
+<% end %>
+
 <h1>Questions</h1>
-
-<ul>
-  <% @questions.each do |question| %>
-    <li>
-      <strong><%= question.title %></strong>
-      <p><%= question.content %></p>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to '新しい質問を投稿する', new_question_path %>
+<% @questions.each do |q| %>
+    <p><%= link_to "質問タイトル", question_path(q) %></p>
+<% end %>
