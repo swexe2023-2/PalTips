@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'home/index'
-  root 'home#index'
+  #root 'home#index'
   get 'grades/index'
   get 'subjects/index'
   
@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :users
   #root 'questions#index'
-  
+  root 'answers#show'
   
 end

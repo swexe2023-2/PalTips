@@ -1,2 +1,11 @@
 <h1>Answers#show</h1>
 <p>Find me in app/views/answers/show.html.erb</p>
+
+<% if @answers %>
+    <% @answers.each do |a| %>
+        <p><%= a.user.user_name %></p>
+        <p><%= a.content_answer %></p>
+    <% end %>
+<% else %>
+    <p>投稿された回答はありません</p>
+<% end %>
