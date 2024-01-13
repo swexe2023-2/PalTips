@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :users
   #root 'questions#index'
+  
+  
 end
