@@ -5,11 +5,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2 custom-search" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success text-light" type="submit">Search</button>
-        
-      </form>
+      <%= form_with url: questions_search_path, method: :get, class: "d-flex", role: "search" do |f| %>
+        <%= f.text_field :search, class: "form-control me-2 custom-search", placeholder: "Search", aria: { label: "Search" } %>
+        <%= f.submit "Search", class: "btn btn-outline-success text-light" %>
+      <% end %>
     </div>
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">

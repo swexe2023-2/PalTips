@@ -4,11 +4,13 @@ Rails.application.routes.draw do
   get 'grades/index'
   get 'subjects/index'
   
+  get 'questions/search'
+
   resources :questions do
     resources :answers
   end
-  get 'questions/search'
-  
+
+
   resources :answers
   
   get 'sessions/index'
