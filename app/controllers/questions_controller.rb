@@ -53,7 +53,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-     print("destroy起動")
+    print("destroy起動")
     delete_question = Question.find(params[:id])
     delete_question.destroy
     redirect_to root_path
