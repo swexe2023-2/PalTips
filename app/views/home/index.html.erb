@@ -217,12 +217,21 @@ label #cancel{
        <i class="fas fa-calendar"></i>
       <span>1年生</span>
     </a>
-    <a href="#">
+    
+<%
+=begin
+%>
+   <a href="#">
       <%= link_to "科目追加",
       subjects_path, class:"
       nav-link" %>
     </a>
   </div>
+  
+<%
+=end
+%>
+   
 
 <script>
   const sidebar = document.querySelector('.sidebar');
