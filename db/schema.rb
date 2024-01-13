@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_13_021930) do
-  create_table "answers", force: :cascade do |t|
-    t.string "content_answer"
-    t.integer "user_id"
-    t.integer "question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2023_12_20_062100) do
   create_table "grades", force: :cascade do |t|
     t.string "school_grade"
     t.datetime "created_at", null: false
@@ -50,3 +42,4 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_021930) do
   end
 
 end
+
