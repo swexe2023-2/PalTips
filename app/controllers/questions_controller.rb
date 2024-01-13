@@ -36,6 +36,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     #質問の個別ページを表示
+    @answers = @question.answers
   end
 
   def edit

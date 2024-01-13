@@ -5,7 +5,7 @@
 <h1>Questions</h1>
 <% if @questions %>
     <% @questions.each do |q| %>
-        <p><%= link_to "質問タイトル", question_path(q) %></p>
+        <p><%= link_to q.title, question_path(q) %></p>
     <% end %>
 <% else %>
     <p>投稿された質問はありません</p>
