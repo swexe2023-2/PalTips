@@ -36,6 +36,7 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     #質問の個別ページを表示
+    @answers = @question.answers
   end
 
   def edit
@@ -53,7 +54,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-     print("destroy起動")
+    print("destroy起動")
     delete_question = Question.find(params[:id])
     delete_question.destroy
     redirect_to root_path

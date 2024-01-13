@@ -1,2 +1,16 @@
 <h1>Answers#show</h1>
 <p>Find me in app/views/answers/show.html.erb</p>
+
+<h3>回答</h3>
+<% if @answers %>
+    <% @answers.each do |a| %>
+        <div>
+            <P>回答者：<%= a.user.user_name %></P>
+            <p>回答内容：<%= a.content_answer %></p>
+            <p><%= link_to "編集", edit_answer_path(a) %></p>
+            <p><%= link_to "削除", answer_path(a), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %></p>
+        </div>
+    <% end %>
+<% else %>
+    <p>投稿された回答はありません</p>
+<% end %>

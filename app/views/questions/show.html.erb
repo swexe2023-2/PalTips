@@ -24,3 +24,49 @@
         </tr>
     <% end %>
 </table>
+
+
+<h3>回答</h3>
+<% if @answers %>
+    <% @answers.each do |a| %>
+        <div data-controller="answer">
+            <P>回答者：<%= a.user.user_name %></P>
+            
+            <!-- 回答の表示 -->
+            <div data-answer-target="display" data-answer-id="<%= a.id %>">
+                <p>回答内容：<%= a.content_answer %></p>
+                <% if current_user && a.user_id == current_user.id %>
+                    <button data-action="click->answer#toggleEditForm" data-answer-id="<%= a.id %>">編集</button>
+                    <p><%= link_to "削除", answer_path(a), data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' } %></p>
+                <% end %>
+            </div>
+            
+            <!-- 編集フォームの表示 -->
+            <div data-answer-target="form" data-answer-id="<%= a.id %>" style="display: none;">
+                <%= form_with model: [ @question, a ], remote: true do |f| %>
+                    <%= f.text_area :content_answer, value: a.content_answer %>
+                <%= f.submit "更新" %>
+            </div>
+            <% end %>
+        </div>
+    <% end %>
+<% else %>
+    <p>投稿された回答はありません</p>
+<% end %>
+
+
+<!-- 新規投稿/編集用トグルボタン -->
+<% if current_user %>
+    <div data-controller="answer">
+        <button data-action="click->answer#toggleForm" data-answer-target="button">回答をする</button>
+        
+        <div data-answer-target="form" style="display: none;">
+            <%= form_with model: [ @question, Answer.new ], remote: true do |f| %>
+                <%= f.label :content_answer, "回答内容" %>
+                <%= f.text_area :content_answer %>
+                <%= f.submit "送信" %>
+            <% end %>
+        </div>
+        
+    </div>
+<% end %>
