@@ -61,6 +61,10 @@ class QuestionsController < ApplicationController
   end
 
   def search
+    puts "search起動"
+    puts params
+    @questions = Question.where("title LIKE ? OR content_question LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    render 'index'
   end
   
   private
