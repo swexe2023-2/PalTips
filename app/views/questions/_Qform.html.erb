@@ -1,21 +1,71 @@
-<table>
+<!--<table class="table table-striped table-bordered">-->
+<!--    <thead class="thead-dark">-->
+<!--        <tr>-->
+<!--            <td><%= f.label :title, 'タイトル' %></td>-->
+<!--            <td><%= f.text_field :title %></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td><%= f.label :content_question, '質問内容' %></td>-->
+<!--            <td><%= f.text_field :content_question %></td>        -->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td><%= f.label :subject_id %></td>-->
+<!--            <td><%= f.collection_select :subject_id, Subject.all, :id, :subject_name, :include_blank => "授業カテゴリーを選択してください" %></td>-->
+<!--        </tr>-->
+<!--    </thead>-->
+<!--<% if @question.persisted? %> <!--@questionがデータベースに保存されているかどうか-->-->
+<!--    </table>-->
+<!--    <%= f.submit '編集' %>-->
+<!--<% else %>-->
+<!--    </table>-->
+<!--    <%= f.submit '質問投稿' %>-->
+<!--<% end %>-->
+
+
+<table class="table table-striped table-bordered">
+  <thead class="thead-dark">
     <tr>
-        <td><%= f.label :title, 'タイトル' %></td>
-        <td><%= f.text_field :title %></td>
+      <td>
+        <div class="form-group">
+          <%= f.label :title, 'タイトル' %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+      </td>
     </tr>
     <tr>
-        <td><%= f.label :content_question, '質問内容' %></td>
-        <td><%= f.text_field :content_question %></td>        
+      <td>
+        <div class="form-group">
+          <%= f.label :content_question, '質問内容' %>
+          <%= f.text_field :content_question, class: 'form-control' %>
+        </div>
+      </td>
     </tr>
     <tr>
-        <td><%= f.label :subject_id %></td>
-        <td><%= f.collection_select :subject_id, Subject.all, :id, :subject_name, :include_blank => "授業カテゴリーを選択してください" %></td>
+      <td>
+        <div class="form-group">
+          <%= f.label :subject_id %>
+          <%= f.collection_select :subject_id, Subject.all, :id, :subject_name, include_blank: "授業カテゴリーを選択してください", class: 'form-control' %>
+        </div>
+      </td>
     </tr>
-    
+  </thead>
+</table>
+
 <% if @question.persisted? %> <!--@questionがデータベースに保存されているかどうか-->
-    </table>
-    <%= f.submit '編集' %>
+  <%= f.submit '編集', class: 'btn btn-primary' %>
 <% else %>
-    </table>
-    <%= f.submit '質問投稿' %>
+  <%= f.submit '質問投稿', class: 'btn btn-primary' %>
 <% end %>
+
+<style>
+    .table{
+        margin: auto;
+        width: 80%; 
+    }
+  
+    .btn-primary {
+        float: left;
+        margin-top: 20px;
+        margin-left: 110px;
+    }
+</style>

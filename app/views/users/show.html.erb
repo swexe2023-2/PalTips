@@ -1,16 +1,75 @@
-<% if @selected_user == current_user %>
-    <p>user id：<%= current_user.id %></p>
-    <p>user name：<%= current_user.user_name %></p>
-    <p><%= link_to "ログアウト画面", sessions_logout_path %></p>
-    <p><%= link_to "ユーザー削除", user_path(current_user), data: {turbo_method: :delete} %></p>
-<% else %>
-    <p>user name：<%= @selected_user.user_name %></p>
-<% end %>
+<!--<% if @selected_user == current_user %>-->
+<!--    <p>user id：<%= current_user.id %></p>-->
+<!--    <p>user name：<%= current_user.user_name %></p>-->
+<!--    <p><%= link_to "ログアウト画面", sessions_logout_path %></p>-->
+<!--    <p><%= link_to "ユーザー削除", user_path(current_user), data: {turbo_method: :delete} %></p>-->
+<!--<% else %>-->
+<!--    <p>user name：<%= @selected_user.user_name %></p>-->
+<!--<% end %>-->
 
-<h3>投稿した質問</h3>
-<ul>
-    <% @user_questions.each do |q| %>
-        <li><%= link_to q.title, question_path(q) %></li>
-    <% end %>
-</ul>
+<!--<h3>投稿した質問</h3>-->
+<!--<ul>-->
+<!--    <% @user_questions.each do |q| %>-->
+<!--        <li><%= link_to q.title, question_path(q) %></li>-->
+<!--    <% end %>-->
+<!--</ul>-->
 
+
+<div class="container">
+  <table class="table">
+    <tr>
+      <% if @selected_user == current_user %>
+        <th>User Information</th>
+        <td>User ID: <%= current_user.id %></td>
+        <td>User Name: <%= current_user.user_name %></td>
+        <td><%= link_to "ログアウト画面", sessions_logout_path %></td>
+        <td><%= link_to "ユーザー削除", user_path(current_user), data: {turbo_method: :delete} %></td>
+      <% else %>
+        <th>User Information</th>
+        <td>User Name: <%= @selected_user.user_name %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <th>投稿した質問</th>
+      <td colspan="4">
+        <ul>
+          <% @user_questions.each do |q| %>
+            <li><%= link_to q.title, question_path(q) %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<style>
+  .table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  td, th {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    font-size: 16px;
+  }
+
+  a {
+    color: #007BFF;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .table{
+    margin: auto;
+    width: 80%; 
+  }
+</style>

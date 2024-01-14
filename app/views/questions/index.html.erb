@@ -1,12 +1,71 @@
-<% if current_user %>
-    <%= link_to "質問投稿画面", new_question_path %><br>
-<% end %>
+<!--<% if current_user %>-->
+<!--    <%= link_to "質問投稿画面", new_question_path %><br>-->
+<!--<% end %>-->
 
-<h1>Questions</h1>
-<% if @questions %>
-    <% @questions.each do |q| %>
-        <p><%= link_to q.title, question_path(q) %></p>
-    <% end %>
-<% else %>
-    <p>投稿された質問はありません</p>
-<% end %>
+<!--<h1>Questions</h1>-->
+<!--<% if @questions %>-->
+<!--    <% @questions.each do |q| %>-->
+<!--        <p><%= link_to q.title, question_path(q) %></p>-->
+<!--    <% end %>-->
+<!--<% else %>-->
+<!--    <p>投稿された質問はありません</p>-->
+<!--<% end %>-->
+
+<table>
+  <tr>
+    <td>
+      <h1>質問一覧</h1>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% if @questions.any? %>
+        <% @questions.each do |q| %>
+          <p><%= link_to q.title, question_path(q) %></p>
+        <% end %>
+      <% else %>
+        <p class="no-questions">投稿された質問はありません</p>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% if current_user %>
+        <%= link_to "質問投稿画面", new_question_path, class: "post-question-link" %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin: auto;
+    width: 80%; 
+  }
+
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .no-questions {
+    font-style: italic;
+    color: #888;
+  }
+
+  .post-question-link {
+    margin-top: 10px;
+    display: block;
+  }
+</style>

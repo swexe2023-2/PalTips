@@ -157,7 +157,7 @@ label #cancel{
   user-select: none;
   font-weight: bolder;
   color: black;
-  left: 200px
+  left: 200px;
 }
 
 .card:hover {
@@ -168,6 +168,7 @@ label #cancel{
 .card:active {
   transform: scale(0.95) rotateZ(1.7deg);
 }
+
 
 </style>
 
@@ -220,43 +221,30 @@ label #cancel{
   
 </script>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <h5>授業名</h5>
-        </div>
+<% Subject.all.each do |subject| %>
+  <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <%= link_to questions_path(subject) do %>
+      <div class="card">
+        <h5><%= subject.subject_name %></h5>
       </div>
-    </div>
+    <% end %>
   </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <h5>授業名</h5>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <h5>授業名</h5>
-        </div>      
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <h5>授業名</h5>
-        </div>      
-      </div>
-    </div>
-  </div>
-</div>
-</body>
+<% end %>
+
+
+
+
+
+
+<!--<% Subject.all.each do |subject| %>-->
+<!--  <div class="card border-dark mb-3" style="max-width: 18rem;">-->
+<!--    <div class="card-body">-->
+<!--      <%= link_to questions_path(subject) do %>-->
+<!--        <h5><%= subject.subject_name %></h5>-->
+<!--      <% end %>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--<% end %>-->
+
+
 </html> 
