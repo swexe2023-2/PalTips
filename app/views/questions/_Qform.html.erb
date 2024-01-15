@@ -36,14 +36,14 @@
       <td>
         <div class="form-group">
           <%= f.label :content_question, '質問内容' %>
-          <%= f.text_field :content_question, class: 'form-control' %>
+          <%= f.text_area :content_question, class: 'form-control', rows: 5 %>
         </div>
       </td>
     </tr>
     <tr>
       <td>
         <div class="form-group">
-          <%= f.label :subject_id %>
+          <%= f.label :subject_id, '科目' %>
           <%= f.collection_select :subject_id, Subject.all, :id, :subject_name, include_blank: "授業カテゴリーを選択してください", class: 'form-control' %>
         </div>
       </td>
@@ -51,21 +51,31 @@
   </thead>
 </table>
 
-<% if @question.persisted? %> <!--@questionがデータベースに保存されているかどうか-->
-  <%= f.submit '編集', class: 'btn btn-primary' %>
-<% else %>
-  <%= f.submit '質問投稿', class: 'btn btn-primary' %>
-<% end %>
+<div class="form-actions">
+  <%= link_to '戻る', questions_path, class: 'btn btn-secondary' %>
+  <% if @question.persisted? %> <!--@questionがデータベースに保存されているかどうか-->
+    <%= f.submit '編集', class: 'btn btn-primary' %>
+  <% else %>
+    <%= f.submit '質問投稿', class: 'btn btn-primary' %>
+  <% end %>
+</div>
 
 <style>
-    .table{
-        margin: auto;
-        width: 80%; 
-    }
-  
-    .btn-primary {
-        float: left;
-        margin-top: 20px;
-        margin-left: 110px;
-    }
+  .table {
+    margin: auto;
+    width: 80%;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .form-actions {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .btn-secondary {
+    margin-right: 10px;
+  }
 </style>
