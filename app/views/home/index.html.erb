@@ -157,7 +157,7 @@ label #cancel{
   user-select: none;
   font-weight: bolder;
   color: black;
-  left: 200px;
+  margin-left: 240px;
 }
 
 .card:hover {
@@ -197,6 +197,14 @@ label #cancel{
       <span>1年生</span>
     </a>
   </div>
+  
+  <% Subject.all.each do |subject| %>
+      <%= link_to questions_path(subject) do %>
+        <div class="card">
+          <h5><%= subject.subject_name %></h5>
+        </div>
+      <% end %>
+  <% end %>
 
 <script>
   const sidebar = document.querySelector('.sidebar');
@@ -208,7 +216,8 @@ label #cancel{
   
   function toggleSidebarVisibility() {
     const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('sidebar--visible');  }
+    sidebar.classList.toggle('sidebar--visible');
+  }
   
   const sidebarLinks = document.querySelectorAll('.sidebar a');
   sidebarLinks.forEach(link => {
@@ -218,33 +227,8 @@ label #cancel{
           toggleSidebarVisibility();
       });
   });
-  
+
 </script>
 
-<% Subject.all.each do |subject| %>
-  <div class="card border-dark mb-3" style="max-width: 18rem;">
-    <%= link_to questions_path(subject) do %>
-      <div class="card">
-        <h5><%= subject.subject_name %></h5>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
-
-
-
-
-
-<!--<% Subject.all.each do |subject| %>-->
-<!--  <div class="card border-dark mb-3" style="max-width: 18rem;">-->
-<!--    <div class="card-body">-->
-<!--      <%= link_to questions_path(subject) do %>-->
-<!--        <h5><%= subject.subject_name %></h5>-->
-<!--      <% end %>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--<% end %>-->
-
-
 </html> 
+</body>
