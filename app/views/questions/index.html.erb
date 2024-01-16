@@ -2,6 +2,10 @@
 <!--    <%= link_to "質問投稿画面", new_question_path %><br>-->
 <!--<% end %>-->
 
+<!-- 並び替えリンク -->
+<%= link_to '最新順', questions_path(sort: 'newest') %>
+<%= link_to '古い順', questions_path(sort: 'oldest') %>
+
 <!--<h1>Questions</h1>-->
 <!--<% if @questions %>-->
 <!--    <% @questions.each do |q| %>-->
