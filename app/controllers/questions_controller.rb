@@ -6,6 +6,12 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.all
     end
+    
+    if params[:sort] == "newest"
+      @questions = @questions.order(created_at: :desc)
+    elsif params[:sort] == "oldest"
+      @questions = @questions.order(created_at: :asc)
+    end
   end
 
   def new
