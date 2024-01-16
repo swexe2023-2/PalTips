@@ -1,7 +1,11 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all
-    #選択された授業の質問一覧を表示する
+    puts params[:subject_id]
+    if params[:subject_id]
+      @questions = Question.where(subject_id: params[:subject_id])
+    else
+      @questions = Question.all
+    end
   end
 
   def new
