@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'home/index'
-  #root 'home#index'
+  root 'home#index'
   get 'grades/index'
   get 'subjects/index'
   
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :users
-  root 'questions#index'
+  #root 'questions#index'
   #root 'answers#show'
-  
+  resources :subjects
 end

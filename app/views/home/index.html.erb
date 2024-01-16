@@ -157,7 +157,7 @@ label #cancel{
   user-select: none;
   font-weight: bolder;
   color: black;
-  left: 200px
+  margin-left: 240px;
 }
 
 .card:hover {
@@ -168,6 +168,7 @@ label #cancel{
 .card:active {
   transform: scale(0.95) rotateZ(1.7deg);
 }
+
 
 </style>
 
@@ -196,6 +197,14 @@ label #cancel{
       <span>1年生</span>
     </a>
   </div>
+  
+  <% Subject.all.each do |subject| %>
+      <%= link_to questions_path(subject) do %>
+        <div class="card">
+          <h5><%= subject.subject_name %></h5>
+        </div>
+      <% end %>
+  <% end %>
 
 <script>
   const sidebar = document.querySelector('.sidebar');
@@ -207,7 +216,8 @@ label #cancel{
   
   function toggleSidebarVisibility() {
     const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('sidebar--visible');  }
+    sidebar.classList.toggle('sidebar--visible');
+  }
   
   const sidebarLinks = document.querySelectorAll('.sidebar a');
   sidebarLinks.forEach(link => {
@@ -217,46 +227,8 @@ label #cancel{
           toggleSidebarVisibility();
       });
   });
-  
+
 </script>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <h5>授業名</h5>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <h5>授業名</h5>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <h5>授業名</h5>
-        </div>      
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card">
-      <div class="card-body">
-        <div class="container">
-            <h5>授業名</h5>
-        </div>      
-      </div>
-    </div>
-  </div>
-</div>
-</body>
 </html> 
+</body>
